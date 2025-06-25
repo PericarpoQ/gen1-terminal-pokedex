@@ -1,0 +1,3 @@
+[lint]
+extend-select = ["ALL"]
+ignore = ["PLR0913", "D203", "D213", "COM812"]
