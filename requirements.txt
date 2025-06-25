@@ -1,0 +1,4 @@
+ascii-magic==2.3.0
+click==8.2.1
+pygame==2.6.1
+requests==2.32.4
