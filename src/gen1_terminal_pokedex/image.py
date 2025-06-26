@@ -20,15 +20,15 @@ from PIL import Image, UnidentifiedImageError
 def process_image(image_url: str, columns: int = 64) -> str:
     """Process a PNG image from a URL to generate ASCII art.
 
-    This function takes the URL of a PNG file, crops any transparent
-    borders, and then converts the result into an ASCII art string.
+    This function takes the URL of a PNG file, crops any transparent borders, and then
+    converts the result into an ASCII art string.
 
     Args:
-        image_url: The URL of the PNG image file.
-        columns: The number of columns for the ASCII art.
+        image_url (str): The URL of the PNG image file.
+        columns (int): The number of columns for the ASCII art.
 
     Returns:
-        A string containing the generated ASCII art.
+        str: A string containing the generated ASCII art.
 
     """
     try:
