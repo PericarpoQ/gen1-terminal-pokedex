@@ -4,6 +4,8 @@ from typing import Any
 
 import requests
 
+from src.gen1_terminal_pokedex.image import process_image
+
 MIN_DEX_NUMBER = 1
 MAX_DEX_NUMBER = 151
 MAX_TYPES = 2
@@ -30,7 +32,7 @@ class Pokemon:
         self.type2 = poke_data["types"][1] if len(poke_data["types"]) > 1 else None
         self.height = poke_data["height"]
         self.weight = poke_data["weight"]
-        self.sprite_url = poke_data["sprite"]
+        self.image = process_image(poke_data["sprite"])
         self.cry_url = poke_data["cry"]
         self.flavor_text = poke_data["flavor_text"]
         self.genus = poke_data["genus"]
