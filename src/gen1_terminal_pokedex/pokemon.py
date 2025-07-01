@@ -106,7 +106,7 @@ class Pokemon:
             poke_types.append(poke_info["past_types"][0]["types"][0]["type"]["name"])
         # Build the dictionary
         return {
-            "name": poke_info["name"],
+            "name": poke_info["name"][0].upper() + poke_info["name"][1:],
             "id": poke_info["id"],
             "types": poke_types,
             "height": int(poke_info["height"]) / 10,
@@ -115,10 +115,13 @@ class Pokemon:
                 "front_transparent"
             ],
             "cry": poke_info["cries"]["legacy"],
-            "flavor_text": next(
-                item["flavor_text"]
-                for item in species_info["flavor_text_entries"]
-                if item["language"]["name"] == "en" and item["version"]["name"] == "red"
+            "flavor_text": " ".join(
+                next(
+                    item["flavor_text"]
+                    for item in species_info["flavor_text_entries"]
+                    if item["language"]["name"] == "en"
+                    and item["version"]["name"] == "red"
+                ).split()
             ),
             "genus": next(
                 item["genus"]
