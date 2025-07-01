@@ -104,6 +104,7 @@ class Pokemon:
                 poke_types.append(poke_info["types"][1]["type"]["name"])
         else:
             poke_types.append(poke_info["past_types"][0]["types"][0]["type"]["name"])
+        poke_types = [item.capitalize() for item in poke_types]
         # Build the dictionary
         return {
             "name": poke_info["name"][0].upper() + poke_info["name"][1:],
