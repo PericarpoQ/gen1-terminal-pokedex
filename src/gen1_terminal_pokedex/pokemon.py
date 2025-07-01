@@ -79,23 +79,23 @@ class Pokemon:
         location_info = requests.get(location_url, timeout=5).json()
 
         # Get area info
-        areas = []
-        for location in location_info:
-            for version in location["version_details"]:
-                if version["version"]["name"] == "red":
-                    areas.append(location["location_area"]["name"])  # noqa: PERF401
-        # Get moves info
-        moves = []
-        for move in poke_info["moves"]:
-            for version in move["version_group_details"]:
-                if version["version_group"]["name"] == "red-blue":
-                    moves.append(  # noqa: PERF401
-                        {
-                            "move": move["move"]["name"],
-                            "method": version["move_learn_method"]["name"],
-                            "level": version["level_learned_at"],
-                        }
-                    )
+        areas = [
+            location["location_area"]["name"]
+            for location in location_info
+            for version in location["version_details"]
+            if version["version"]["name"] == "red"
+        ]
+
+        moves = [
+            {
+                "move": move["move"]["name"],
+                "method": version["move_learn_method"]["name"],
+                "level": version["level_learned_at"],
+            }
+            for move in poke_info["moves"]
+            for version in move["version_group_details"]
+            if version["version_group"]["name"] == "red-blue"
+        ]
         # Get types info
         poke_types = []
         if poke_info["past_types"] == []:
