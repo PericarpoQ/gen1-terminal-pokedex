@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import time
 from pathlib import Path
 
+import pygame
 import requests
 
 
@@ -41,3 +43,18 @@ def download_sound(
             file.write(response.content)
 
     return str(file_path)
+
+
+def play_sound(file_path: str) -> None:
+    """Play a downloaded sound.
+
+    Args:
+        file_path (str): Path to the sound that will be played.
+
+    """
+    pygame.mixer.init()
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.set_volume(1)
+    pygame.mixer.music.play()
+    time.sleep(1)
+    pygame.quit()
