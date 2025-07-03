@@ -194,3 +194,5 @@ cython_debug/
 .cursorindexingignore
 
 project.md
+
+src/gen1_terminal_pokedex/assets/*
