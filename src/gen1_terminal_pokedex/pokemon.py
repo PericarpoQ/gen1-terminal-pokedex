@@ -4,6 +4,7 @@ from typing import Any
 
 import requests
 
+from src.gen1_terminal_pokedex.cry_sound import download_sound, play_sound
 from src.gen1_terminal_pokedex.image import process_image
 
 MIN_DEX_NUMBER = 1
@@ -38,6 +39,15 @@ class Pokemon:
         self.genus = poke_data["genus"]
         self.areas = poke_data["areas"]
         self.learnset = poke_data["learnset"]
+        self.sound_path = None
+
+    def play_cry(self) -> None:
+        """Download and play the pokemon cry."""
+        if self.sound_path is None:
+            self.sound_path = download_sound(self.cry_url)
+            play_sound(self.sound_path)
+        else:
+            play_sound(self.sound_path)
 
     @staticmethod
     def id_validator(pokemon_id: str) -> bool:
