@@ -91,12 +91,14 @@ class Pokemon:
         location_info = requests.get(location_url, timeout=5).json()
 
         # Get area info
-        areas = [
-            location["location_area"]["name"]
-            for location in location_info
-            for version in location["version_details"]
-            if version["version"]["name"] == "red"
-        ]
+        areas = list(
+            {
+                location["location_area"]["name"]
+                for location in location_info
+                for version in location["version_details"]
+                if version["version"]["name"] in ["red", "blue"]
+            }
+        )
 
         moves = [
             {
