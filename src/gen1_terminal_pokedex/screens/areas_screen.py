@@ -64,5 +64,7 @@ def get_area_screen(pokemon: Pokemon) -> str:
                 f"║ {lft.ljust(left_width - 1)}\033[0m ║ {rgt.ljust(right_width - 1)}║"
             )
 
+    screen.append(f"║{' ' * left_width}║{' ' * right_width}║")
+    screen.append(f"║{' ' * left_width}║{' ' * right_width}║")
     screen.append(f"╚{'═' * left_width}╩{'═' * right_width}╝")
     return "\n".join(screen)
