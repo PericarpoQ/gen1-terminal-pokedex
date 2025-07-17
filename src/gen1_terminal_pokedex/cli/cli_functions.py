@@ -39,3 +39,8 @@ def setup_initial_screen() -> Pokemon:
         pkmn.play_cry()
         break
     return pkmn
+
+
+def show_options() -> None:
+    """Show the options."""
+    click.echo("Options → AREA | CRY | LEARNSET | QUIT\n")

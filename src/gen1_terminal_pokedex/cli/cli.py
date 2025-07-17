@@ -13,6 +13,7 @@ from src.gen1_terminal_pokedex.cli import cli_functions
 def cli() -> None:
     """Run the CLI."""
     cli_functions.setup_initial_screen()
+    cli_functions.show_options()
 
 
 cli()
