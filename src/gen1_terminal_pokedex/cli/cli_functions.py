@@ -36,5 +36,6 @@ def setup_initial_screen() -> Pokemon:
         clear_previous_lines(lines_to_clear)
 
         click.echo(get_info_screen(pkmn))
+        pkmn.play_cry()
         break
     return pkmn
