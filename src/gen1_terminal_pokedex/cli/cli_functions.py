@@ -44,3 +44,20 @@ def setup_initial_screen() -> Pokemon:
 def show_options() -> None:
     """Show the options."""
     click.echo("Options → AREA | CRY | LEARNSET | QUIT\n")
+
+
+def validate_option() -> str:
+    """Validate user input for options.
+
+    Returns:
+        str: Validated option.
+
+    """
+    user_input = click.prompt(">")
+    options = ["AREA", "CRY", "LEARNSET", "QUIT"]
+    while user_input not in options:
+        click.echo("Invalid option, try again!")
+        time.sleep(1)
+        clear_previous_lines(2)
+        user_input = click.prompt(">")
+    return user_input

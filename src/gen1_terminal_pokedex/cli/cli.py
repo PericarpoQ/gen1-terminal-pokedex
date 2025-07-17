@@ -14,6 +14,7 @@ def cli() -> None:
     """Run the CLI."""
     cli_functions.setup_initial_screen()
     cli_functions.show_options()
+    cli_functions.validate_option()
 
 
 cli()
