@@ -46,7 +46,7 @@ def setup_initial_screen() -> Pokemon:
 
 def show_options() -> None:
     """Show the options."""
-    click.echo("Options → AREA | CRY | LEARNSET | QUIT\n")
+    click.echo("Options → AREA | CRY | INFO | LEARNSET | QUIT\n")
 
 
 def validate_option() -> str:
@@ -57,7 +57,7 @@ def validate_option() -> str:
 
     """
     user_input = click.prompt(">")
-    options = ["AREA", "CRY", "LEARNSET", "QUIT"]
+    options = ["AREA", "CRY", "LEARNSET", "QUIT", "INFO"]
     while user_input not in options:
         click.echo("Invalid option, try again!")
         time.sleep(1)
@@ -84,6 +84,16 @@ def change_to_learnset(pkmn: Pokemon) -> None:
 
     """
     transition_to_screen(get_learnset_screen, pkmn)
+
+
+def change_to_info(pkmn: Pokemon) -> None:
+    """Print pokemon info screen.
+
+    Args:
+    pkmn (Pokemon): Pokémon whose screen is to be displayed.
+
+    """
+    transition_to_screen(get_info_screen, pkmn)
 
 
 def play_pokemon_cry(pkmn: Pokemon) -> None:

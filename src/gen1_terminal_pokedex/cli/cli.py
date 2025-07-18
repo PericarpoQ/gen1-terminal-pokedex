@@ -28,6 +28,10 @@ def cli() -> None:
             cli_functions.play_pokemon_cry(pokemon)
             cli_functions.show_options()
             user_input = cli_functions.validate_option()
+        if user_input == "INFO":
+            cli_functions.change_to_info(pokemon)
+            cli_functions.show_options()
+            user_input = cli_functions.validate_option()
 
 
 cli()
