@@ -1,12 +1,15 @@
 """Module with functions to be used by the CLI."""
 
 import time
+from typing import Callable
 
 import click
 
 from src.gen1_terminal_pokedex.pokemon import Pokemon
+from src.gen1_terminal_pokedex.screens.areas_screen import get_area_screen
 from src.gen1_terminal_pokedex.screens.info_screen import get_info_screen
 from src.gen1_terminal_pokedex.screens.initial_screen import get_initial_screen
+from src.gen1_terminal_pokedex.screens.learnset_screen import get_learnset_screen
 from src.gen1_terminal_pokedex.screens.utils import clear_previous_lines
 
 
@@ -61,3 +64,51 @@ def validate_option() -> str:
         clear_previous_lines(2)
         user_input = click.prompt(">")
     return user_input
+
+
+def change_to_area(pkmn: Pokemon) -> None:
+    """Print area screen.
+
+    Args:
+        pkmn (Pokemon): Pokémon whose screen is to be displayed.
+
+    """
+    transition_to_screen(get_area_screen, pkmn)
+
+
+def change_to_learnset(pkmn: Pokemon) -> None:
+    """Print pokemon learnset screen.
+
+    Args:
+    pkmn (Pokemon): Pokémon whose screen is to be displayed.
+
+    """
+    transition_to_screen(get_learnset_screen, pkmn)
+
+
+def play_pokemon_cry(pkmn: Pokemon) -> None:
+    """Play the pokemon cry.
+
+    Args:
+        pkmn (Pokemon): Pokémon whose screen is to be displayed.
+
+    """
+    pkmn.play_cry()
+    clear_previous_lines(3)
+
+
+def transition_to_screen(screen_function: Callable, pkmn: Pokemon) -> None:
+    """Clear previous screen and print a new one.
+
+    Args:
+        screen_function (Callable): Function that generates a new screen.
+        pkmn (Pokemon): Pokémon whose screen is to be displayed.
+
+    """
+    new_screen = screen_function(pkmn)
+
+    lines_to_clear = new_screen.count("\n") + 4
+
+    clear_previous_lines(lines_to_clear)
+
+    click.echo(new_screen)
