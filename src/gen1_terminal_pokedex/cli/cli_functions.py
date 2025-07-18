@@ -122,3 +122,19 @@ def transition_to_screen(screen_function: Callable, pkmn: Pokemon) -> None:
     clear_previous_lines(lines_to_clear)
 
     click.echo(new_screen)
+
+
+def set_up_cli_loop(pkmn: Pokemon) -> None:
+    """Set up main CLI loop."""
+    user_input = ""
+    while user_input != "QUIT":
+        if user_input == "AREA":
+            change_to_area(pkmn)
+        if user_input == "LEARNSET":
+            change_to_learnset(pkmn)
+        if user_input == "CRY":
+            play_pokemon_cry(pkmn)
+        if user_input == "INFO":
+            change_to_info(pkmn)
+        show_options()
+        user_input = validate_option()
