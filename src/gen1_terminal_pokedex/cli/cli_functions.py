@@ -26,6 +26,10 @@ def setup_initial_screen() -> tuple[Pokemon, int]:
 
         user_input = click.prompt(">")
 
+        if user_input == "QUIT":
+            clear_previous_lines(initial_screen.count("\n") + 2)
+            raise SystemExit
+
         try:
             pkmn = Pokemon(user_input)
         except ValueError:

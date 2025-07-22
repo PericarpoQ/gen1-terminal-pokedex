@@ -25,9 +25,10 @@ def get_initial_screen() -> str:
 
     screen.append(f"╠{'═' * total_width}╣")
 
-    prompt = "Welcome to the Terminal Pokédex. Insert a Pokémon name or number.".center(
-        total_width
-    )
+    prompt = (
+        "Welcome to the Terminal Pokédex. Insert a Pokémon name or number."
+        " Enter QUIT to exit."
+    ).center(total_width)
     screen.append(f"║{prompt}║")
     screen.append(f"╚{'═' * total_width}╝")
 
