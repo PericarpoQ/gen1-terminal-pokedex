@@ -72,43 +72,46 @@ def validate_option() -> str:
     return user_input
 
 
-def change_to_area(pkmn: Pokemon) -> int:
+def change_to_area(pkmn: Pokemon, current_screen_size: int) -> int:
     """Print area screen.
 
     Args:
         pkmn (Pokemon): Pokémon whose screen is to be displayed.
+        current_screen_size (int): The size of the current screen.
 
     Returns:
         int: Size of the current screen.
 
     """
-    return transition_to_screen(get_area_screen, pkmn)
+    return transition_to_screen(get_area_screen, pkmn, current_screen_size)
 
 
-def change_to_learnset(pkmn: Pokemon) -> int:
+def change_to_learnset(pkmn: Pokemon, current_screen_size: int) -> int:
     """Print pokemon learnset screen.
 
     Args:
         pkmn (Pokemon): Pokémon whose screen is to be displayed.
+        current_screen_size (int): The size of the current screen.
 
     Returns:
         int: Size of the current screen.
 
     """
-    return transition_to_screen(get_learnset_screen, pkmn)
+    return transition_to_screen(get_learnset_screen, pkmn, current_screen_size)
 
 
-def change_to_info(pkmn: Pokemon) -> int:
+def change_to_info(pkmn: Pokemon, current_screen_size: int) -> int:
     """Print pokemon info screen.
 
     Args:
         pkmn (Pokemon): Pokémon whose screen is to be displayed.
+        current_screen_size (int): The size of the current screen.
 
     Returns:
         int: Size of the current screen.
 
     """
-    return transition_to_screen(get_info_screen, pkmn)
+    return transition_to_screen(get_info_screen, pkmn, current_screen_size)
 
 
 def play_pokemon_cry(pkmn: Pokemon) -> None:
@@ -122,12 +125,15 @@ def play_pokemon_cry(pkmn: Pokemon) -> None:
     clear_previous_lines(3)
 
 
-def transition_to_screen(screen_function: Callable, pkmn: Pokemon) -> int:
+def transition_to_screen(
+    screen_function: Callable, pkmn: Pokemon, current_screen_size: int
+) -> int:
     """Clear previous screen and print a new one.
 
     Args:
         screen_function (Callable): Function that generates a new screen.
         pkmn (Pokemon): Pokémon whose screen is to be displayed.
+        current_screen_size (int): The size of the current screen.
 
     Returns:
         int: Size of the current screen.
@@ -137,7 +143,7 @@ def transition_to_screen(screen_function: Callable, pkmn: Pokemon) -> int:
 
     lines_to_clear = new_screen.count("\n") + 4
 
-    clear_previous_lines(lines_to_clear)
+    clear_previous_lines(current_screen_size)
 
     click.echo(new_screen)
     return lines_to_clear
@@ -148,13 +154,13 @@ def set_up_cli_loop(pkmn: Pokemon, screen_size: int) -> None:
     user_input = ""
     while user_input != "QUIT":
         if user_input == "AREA":
-            screen_size = change_to_area(pkmn)
+            screen_size = change_to_area(pkmn, screen_size)
         if user_input == "LEARNSET":
-            screen_size = change_to_learnset(pkmn)
+            screen_size = change_to_learnset(pkmn, screen_size)
         if user_input == "CRY":
             play_pokemon_cry(pkmn)
         if user_input == "INFO":
-            screen_size = change_to_info(pkmn)
+            screen_size = change_to_info(pkmn, screen_size)
         show_options()
         user_input = validate_option()
     clear_previous_lines(screen_size)
