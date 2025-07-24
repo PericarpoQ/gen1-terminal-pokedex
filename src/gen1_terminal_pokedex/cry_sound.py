@@ -12,7 +12,7 @@ import requests
 def download_sound(
     cry_url: str,
     file_name: str | None = None,
-    directory: str = "src/gen1_terminal_pokedex/assets",
+    directory: str = "gen1_terminal_pokedex/assets",
 ) -> str:
     """Download a pokemon cry sound file from a URL.
 
