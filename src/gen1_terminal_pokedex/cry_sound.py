@@ -9,10 +9,14 @@ import pygame
 import requests
 
 
+dir_name = Path(__file__)
+asset_path = dir_name.parent / "assets"
+
+
 def download_sound(
     cry_url: str,
     file_name: str | None = None,
-    directory: str = "src/gen1_terminal_pokedex/assets",
+    directory: str = str(asset_path),
 ) -> str:
     """Download a pokemon cry sound file from a URL.
 
