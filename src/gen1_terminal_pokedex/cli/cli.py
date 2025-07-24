@@ -6,7 +6,7 @@ import click
 
 os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 
-from src.gen1_terminal_pokedex.cli import cli_functions
+from gen1_terminal_pokedex.cli import cli_functions
 
 
 @click.command()

@@ -4,8 +4,8 @@ from typing import Any
 
 import requests
 
-from src.gen1_terminal_pokedex.cry_sound import download_sound, play_sound
-from src.gen1_terminal_pokedex.image import process_image
+from gen1_terminal_pokedex.cry_sound import download_sound, play_sound
+from gen1_terminal_pokedex.image import process_image
 
 MIN_DEX_NUMBER = 1
 MAX_DEX_NUMBER = 151

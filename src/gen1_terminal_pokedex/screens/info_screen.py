@@ -1,6 +1,6 @@
 """Module to create the pokemon information screen."""
 
-from src.gen1_terminal_pokedex.pokemon import Pokemon
+from gen1_terminal_pokedex.pokemon import Pokemon
 
 
 def get_info_screen(pokemon: Pokemon) -> str:
