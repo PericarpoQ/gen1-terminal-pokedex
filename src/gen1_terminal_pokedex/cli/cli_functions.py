@@ -5,12 +5,12 @@ from typing import Callable
 
 import click
 
-from src.gen1_terminal_pokedex.pokemon import Pokemon
-from src.gen1_terminal_pokedex.screens.areas_screen import get_area_screen
-from src.gen1_terminal_pokedex.screens.info_screen import get_info_screen
-from src.gen1_terminal_pokedex.screens.initial_screen import get_initial_screen
-from src.gen1_terminal_pokedex.screens.learnset_screen import get_learnset_screen
-from src.gen1_terminal_pokedex.screens.utils import clear_previous_lines
+from gen1_terminal_pokedex.pokemon import Pokemon
+from gen1_terminal_pokedex.screens.areas_screen import get_area_screen
+from gen1_terminal_pokedex.screens.info_screen import get_info_screen
+from gen1_terminal_pokedex.screens.initial_screen import get_initial_screen
+from gen1_terminal_pokedex.screens.learnset_screen import get_learnset_screen
+from gen1_terminal_pokedex.screens.utils import clear_previous_lines
 
 
 def setup_initial_screen() -> tuple[Pokemon, int]:

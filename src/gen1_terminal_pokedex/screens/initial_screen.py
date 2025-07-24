@@ -1,6 +1,6 @@
 """Module to create the pokemon initial screen."""
 
-from src.gen1_terminal_pokedex.screens.utils import LOGO
+from gen1_terminal_pokedex.screens.utils import LOGO
 
 
 def get_initial_screen() -> str:

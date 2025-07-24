@@ -1,6 +1,6 @@
 """Module to create the pokemon areas screen."""
 
-from src.gen1_terminal_pokedex.pokemon import Pokemon
+from gen1_terminal_pokedex.pokemon import Pokemon
 
 
 def get_area_screen(pokemon: Pokemon) -> str:
