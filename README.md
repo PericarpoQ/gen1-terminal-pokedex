@@ -5,7 +5,7 @@ A little gen1 CLI PokéDex built in python
 ## Installation
 
 ```sh
-pip install https://github.com/PericarpoQ/gen1-terminal-pokedex.git
+pip install git+https://github.com/PericarpoQ/gen1-terminal-pokedex.git
 ```
 
 ## Usage
